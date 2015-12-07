@@ -437,12 +437,12 @@ Example:
           }
         }
 
-        var returnToIndex = index ? decodeURIComponent(index) : index;
-        if (!returnToIndex || returnToIndex.slice(-6) === '/index') {
-          returnToIndex = '/';
+        index = index ? decodeURIComponent(index) : '';
+        index = index.replace(/[^a-z0-9\-]+/ig, '');
+        if (index === 'index') {
+          index = '';
         }
-
-        window.location.href = returnToIndex;
+        window.location.href = '/' + index;
       },
 
       _tocItemClass: function(selected, i) {
